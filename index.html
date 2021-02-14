@@ -9,8 +9,6 @@
   
   <title>Frontend Mentor | Rock, Paper, Scissors</title>
 <!-- 
-  Score
-  Rules
 
   You Picked
   The House Picked
@@ -21,11 +19,11 @@
   Play Again -->
 
 </head>
-<body>
-  <div class="modal">
+<body class="body">
+  <div class="modal" id="modal">
     <header class="modal-header">
       <h2 class="modal-header__title">Rules</h2>
-      <button class="modal-header__btn"></button>
+      <button class="modal-header__btn" id="modal-btn"></button>
     </header>
     <img class="modal__image" src="images/image-rules.svg" alt="rules">    
   </div>
@@ -37,18 +35,32 @@
         <p class="scoreboard__points">12</p>
       </div>
     </header>
-      <div class="game-wrapper">
+    <div class="game-wrapper">
       <img class="game-wrapper__bg" src="images/bg-triangle.svg" alt="triangle">
       <div class="icons">
-        <button class="icons__item">
+        <button class="icons__btn" id="rock">
           <img class="icons__icon" src="images/icon-rock.svg" alt="rock">
         </button>
-        <button class="icons__item">
+        <button class="icons__btn" id="paper">
           <img class="icons__icon" src="images/icon-paper.svg" alt="paper">        
         </button>
-        <button class="icons__item">
+        <button class="icons__btn" id="scissors">
           <img class="icons__icon" src="images/icon-scissors.svg" alt="scissors">
         </button>
+      </div>
+    </div>
+    <div class="results-wrapper">
+      <div class="results-wrapper__choice">
+        <h4 class="results-wrapper__title">You picked</h4>
+        <div class="results-wrapper__icon">
+          <img class="icon" src="images/icon-paper.svg" alt="paper">        
+        </div>
+      </div>
+      <div class="results-wrapper__choice">
+        <h4 class="results-wrapper__title">House picked</h4>
+        <div class="results-wrapper__icon">
+          <img class="icon" src="images/icon-paper.svg" alt="paper">        
+        </div>
       </div>
     </div>
     <footer class="footer">
@@ -56,9 +68,9 @@
         Challenge by <a class="attribution__link" href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
         Coded by <a class="attribution__link" href="#">Kajetan Domagała</a>.
       </div>
-      <button class="footer__btn">rules</button>
+      <button class="footer__btn" id="rules-btn">rules</button>
     </footer>
   </div>
-
+  <script src="game.js"></script>
 </body>
 </html>
