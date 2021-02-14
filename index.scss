@@ -19,19 +19,20 @@ body {
     background: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
     background-repeat: no-repeat;
     color: white;
+    min-height: 100vh;
 }
 
 .container {
     margin-top: 2%;
     display: flex;
     flex-direction: column;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
 }
 
 .header {
     border: 2px solid $headerOutline;
-    border-radius: 5px;
+    border-radius: 10px;
     display: flex;
     justify-content: space-between;
     padding: 15px;
@@ -48,13 +49,13 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        font-size: 12px;
+        font-size: 14px;
         text-transform: uppercase;
         letter-spacing: 2px;
-        height: 60px;
+        min-height: 60px;
 
         &__points {
-            font-size: 2rem;
+            font-size: 3rem;
             font-weight: 700;
             color: hsl(229, 25%, 31%);
         }
@@ -113,18 +114,30 @@ body {
 
 .footer {  
     font-size: 18px; 
-    text-align: center; 
     font-weight: 600;
     margin-top: 100px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+
+    .attribution {
+        text-align: center;
+        grid-column: 2;
 
 
-    &__link {
-        color: hsl(228, 45%, 44%); 
-        text-decoration: none;
+        &__link {
+            color: hsl(228, 45%, 44%); 
+            text-decoration: none;
+        }
+
     }
 
 
+
     &__btn {
+        grid-column: 3;
         outline: none;
         border: 2px solid $headerOutline;
         background: transparent;
@@ -135,45 +148,61 @@ body {
         font-weight: 600;
         border-radius: 6px;
         padding: 12px 32px;
-        position: absolute;
-        right: 3%;
-        bottom: 5%;
         cursor: pointer;
     }
 }
 
-@media(max-width: 800px) {
+@media(max-width: 866px) {
     .header {
-        width: 96%;
+        width: 90%;
 
         .scoreboard {
             width: 30%;
         }
     }
+
+    .footer {
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 50px;
+
+        .attribution {
+            grid-row: 2;
+            grid-column-start: 1;
+            grid-column-end: 4;
+        }
+
+
+        &__btn {
+            align-self: center;
+            justify-self: center;
+            grid-row: 1;
+            grid-column: 2;
+        }
+    }
 }
 
 
-@media(max-width: 500px) {
-    .header {
-        margin: 50px 0;
-        width: 96%;
-        display: flex;
-        align-items: center;
+// @media(max-width: 500px) {
+//     .header {
+//         margin: 50px 0;
+//         width: 96%;
+//         display: flex;
+//         align-items: center;
 
-        &__logo {
-            height: 60px;
-        }
+//         &__logo {
+//             height: 60px;
+//         }
 
-        .scoreboard {
-            width: 30%;
+//         .scoreboard {
+//             width: 30%;
 
-            &__title {
-                margin-top: 10px;
-            }
-        }
-    }
+//             &__title {
+//                 margin-top: 10px;
+//             }
+//         }
+//     }
 
-    .game-wrapper {
-        opacity: 0;
-    }
-}
+//     // .game-wrapper {
+//     //     opacity: 0;
+//     // }
+// }
