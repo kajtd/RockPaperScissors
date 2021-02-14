@@ -8,7 +8,7 @@
 
 body {
   font-family: 'Barlow Semi Condensed', sans-serif;
-  background: radial-gradient(#1f3756, #141539);
+  background: radial-gradient(circle at 50% 10%, #1f3756, #141539);
   background-repeat: no-repeat;
   color: white;
   min-height: 100vh;
@@ -157,7 +157,7 @@ body {
 }
 
 .footer .attribution__link {
-  color: #3e52a3;
+  color: #2a46c0;
   text-decoration: none;
 }
 
@@ -167,7 +167,6 @@ body {
   outline: none;
   border: 2px solid #606e85;
   background: transparent;
-  color: white;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 14px;
@@ -175,6 +174,74 @@ body {
   border-radius: 6px;
   padding: 12px 32px;
   cursor: pointer;
+}
+
+.modal {
+  background: white;
+  border-radius: 10px;
+  width: 350px;
+  height: 350px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #3b4363;
+}
+
+.modal-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 80%;
+  margin-bottom: 40px;
+}
+
+.modal-header__title {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.modal-header__btn {
+  height: 30px;
+  width: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.modal-header__btn:after {
+  content: "\d7";
+  font-size: 44px;
+  color: #cccdd2;
+}
+
+.modal__image {
+  width: 250px;
 }
 
 @media (max-width: 866px) {

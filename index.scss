@@ -4,6 +4,9 @@ $yellowBorder: rgb(236, 159, 17);
 $redBorder: rgb(221, 60, 91);
 $blueBorder: rgb(80, 108, 244);
 $headerOutline: hsl(217, 16%, 45%);
+$darkText: hsl(229, 25%, 31%);
+$blueText: hsl(229, 64%, 46%);
+$grayText: rgb(204, 205, 210);
 
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600;700&display=swap');
 
@@ -16,7 +19,7 @@ $headerOutline: hsl(217, 16%, 45%);
 
 body {
     font-family: 'Barlow Semi Condensed', sans-serif;
-    background: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+    background: radial-gradient(circle at 50% 10%, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
     background-repeat: no-repeat;
     color: white;
     min-height: 100vh;
@@ -44,7 +47,7 @@ body {
         width: 20%;
         padding: 10px auto;
         border-radius: 5px;
-        color: hsl(229, 64%, 46%);
+        color: $blueText;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -57,7 +60,7 @@ body {
         &__points {
             font-size: 3rem;
             font-weight: 700;
-            color: hsl(229, 25%, 31%);
+            color: $darkText;
         }
     }
 }
@@ -128,7 +131,7 @@ body {
 
 
         &__link {
-            color: hsl(228, 45%, 44%); 
+            color: $blueText; 
             text-decoration: none;
         }
 
@@ -141,7 +144,6 @@ body {
         outline: none;
         border: 2px solid $headerOutline;
         background: transparent;
-        color: white;
         text-transform: uppercase;
         letter-spacing: 2px;
         font-size: 14px;
@@ -151,6 +153,56 @@ body {
         cursor: pointer;
     }
 }
+
+
+.modal {
+    background: white;
+    border-radius: 10px;
+    width: 350px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $darkText;
+
+    &-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 80%;
+        margin-bottom: 40px;
+
+        &__title {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+
+        &__btn {
+            height: 30px;
+            width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            outline: none;
+
+            &:after {
+                content:"\d7";
+                font-size:44px;
+                color:$grayText;
+            }  
+        }      
+    }
+
+    &__image {
+        width: 250px;
+    }
+}
+
 
 @media(max-width: 866px) {
 
@@ -266,29 +318,3 @@ body {
         }
     }
 }
-
-
-// @media(max-width: 500px) {
-//     .header {
-//         margin: 50px 0;
-//         width: 96%;
-//         display: flex;
-//         align-items: center;
-
-//         &__logo {
-//             height: 60px;
-//         }
-
-//         .scoreboard {
-//             width: 30%;
-
-//             &__title {
-//                 margin-top: 10px;
-//             }
-//         }
-//     }
-
-//     // .game-wrapper {
-//     //     opacity: 0;
-//     // }
-// }
