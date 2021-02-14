@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600;700&display=swap");
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  background: radial-gradient(#1f3756, #141539);
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.container {
+  margin-top: 2%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header {
+  border: 2px solid #606e85;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 15px;
+  width: 800px;
+}
+
+.header .scoreboard {
+  background: white;
+  width: 20%;
+  padding: 10px auto;
+  border-radius: 5px;
+  color: #2a46c0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  height: 60px;
+}
+
+.header .scoreboard__points {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #3b4363;
+}
+
+.game-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  margin-top: 100px;
+}
+
+.game-wrapper .icons {
+  position: relative;
+}
+
+.game-wrapper .icons__item {
+  position: absolute;
+  background: white;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: inset 0 0 5px #606e85;
+  box-shadow: inset 0 0 5px #606e85;
+  cursor: pointer;
+}
+
+.game-wrapper .icons__item:first-child {
+  top: -150px;
+  left: -70px;
+  border: 18px solid #dd3c5b;
+}
+
+.game-wrapper .icons__item:nth-child(2) {
+  top: -340px;
+  right: 35px;
+  border: 18px solid #506cf4;
+}
+
+.game-wrapper .icons__item:last-child {
+  top: -340px;
+  left: 35px;
+  border: 18px solid #ec9f11;
+}
+
+.footer {
+  font-size: 18px;
+  text-align: center;
+  font-weight: 600;
+  margin-top: 100px;
+}
+
+.footer__link {
+  color: #3e52a3;
+  text-decoration: none;
+}
+
+.footer__btn {
+  outline: none;
+  border: 2px solid #606e85;
+  background: transparent;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 12px 32px;
+  position: absolute;
+  right: 3%;
+  bottom: 5%;
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  .header {
+    width: 96%;
+  }
+  .header .scoreboard {
+    width: 30%;
+  }
+}
+
+@media (max-width: 500px) {
+  .header {
+    margin: 50px 0;
+    width: 96%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .header__logo {
+    height: 60px;
+  }
+  .header .scoreboard {
+    width: 30%;
+  }
+  .header .scoreboard__title {
+    margin-top: 10px;
+  }
+  .game-wrapper {
+    opacity: 0;
+  }
+}
+/*# sourceMappingURL=index.css.map */

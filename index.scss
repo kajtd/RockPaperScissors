@@ -1,0 +1,179 @@
+// variables
+$iconBorder-width: 18px;
+$yellowBorder: rgb(236, 159, 17);
+$redBorder: rgb(221, 60, 91);
+$blueBorder: rgb(80, 108, 244);
+$headerOutline: hsl(217, 16%, 45%);
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600;700&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    // overflow-x: hidden;
+}
+
+body {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    background: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+    background-repeat: no-repeat;
+    color: white;
+}
+
+.container {
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+
+.header {
+    border: 2px solid $headerOutline;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    width: 800px;
+
+
+    .scoreboard {
+        background: white;
+        width: 20%;
+        padding: 10px auto;
+        border-radius: 5px;
+        color: hsl(229, 64%, 46%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        height: 60px;
+
+        &__points {
+            font-size: 2rem;
+            font-weight: 700;
+            color: hsl(229, 25%, 31%);
+        }
+    }
+}
+
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 100px;
+
+    .icons {
+        position: relative;
+
+
+        &__item {
+            position: absolute;
+            background: white;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            -moz-box-shadow:    inset 0 0 5px $headerOutline;
+            -webkit-box-shadow: inset 0 0 5px $headerOutline;
+            box-shadow:         inset 0 0 5px $headerOutline;
+            cursor: pointer;
+
+
+    
+            &:first-child {
+                top: -150px;
+                left: -70px;
+                border: $iconBorder-width solid $redBorder;
+            }
+    
+            &:nth-child(2) {
+                top: -340px;
+                right: 35px;
+                border: $iconBorder-width solid $blueBorder;
+            }
+    
+            &:last-child {
+                top: -340px;
+                left: 35px;
+                border: $iconBorder-width solid $yellowBorder;
+            }
+            
+        }
+    }
+}
+
+.footer {  
+    font-size: 18px; 
+    text-align: center; 
+    font-weight: 600;
+    margin-top: 100px;
+
+
+    &__link {
+        color: hsl(228, 45%, 44%); 
+        text-decoration: none;
+    }
+
+
+    &__btn {
+        outline: none;
+        border: 2px solid $headerOutline;
+        background: transparent;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 6px;
+        padding: 12px 32px;
+        position: absolute;
+        right: 3%;
+        bottom: 5%;
+        cursor: pointer;
+    }
+}
+
+@media(max-width: 800px) {
+    .header {
+        width: 96%;
+
+        .scoreboard {
+            width: 30%;
+        }
+    }
+}
+
+
+@media(max-width: 500px) {
+    .header {
+        margin: 50px 0;
+        width: 96%;
+        display: flex;
+        align-items: center;
+
+        &__logo {
+            height: 60px;
+        }
+
+        .scoreboard {
+            width: 30%;
+
+            &__title {
+                margin-top: 10px;
+            }
+        }
+    }
+
+    .game-wrapper {
+        opacity: 0;
+    }
+}
