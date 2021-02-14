@@ -6,6 +6,9 @@ const modal = document.getElementById("modal");
 const container = document.getElementsByClassName("container")[0];
 const gameWrapper = document.getElementsByClassName("game-wrapper")[0];
 const resultsWrapper = document.getElementsByClassName("results-wrapper")[0];
+const userImg = document.getElementById("user-image");
+const houseImg = document.getElementById("house-image");
+const resultInfo = document.getElementById("result__info");
 
 const closeModal = () => {
     modal.classList.remove("modal-active");
@@ -23,63 +26,61 @@ rulesBtn.addEventListener("click", openModal);
 
 // game code
 
-let userChoice, computerChoice;
+let userChoice, houseChoice, userChoiceNumber, houseChoiceNumber, resultInfoContent;
+
+const choices = [
+    {name:"rock", image:"images/icon-rock.svg", borderColor:"rgb(221, 60, 91)"},
+    {name:"paper", image:"images/icon-paper.svg", borderColor:"rgb(80, 108, 244)"},
+    {name:"scissors", image:"images/icon-scissors.svg", borderColor:"rgb(236, 159, 17)"},
+];
+
 const rock = document.getElementById("rock");
 const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
 
 rock.addEventListener("click", () => {
-    userChoice = "rock";
-    generateComputerChoice();
-    determineTheWinner();
-    changeScene();
+    userChoiceNumber = 0;
+    generateHouseChoice();
 });
 
 paper.addEventListener("click", () => {
-    userChoice = "paper";
-    generateComputerChoice();
-    determineTheWinner();
-    changeScene();
+    userChoiceNumber = 1;
+    generateHouseChoice();
 });
 
 scissors.addEventListener("click", () => {
-    userChoice = "scissors";
-    generateComputerChoice();
-    determineTheWinner();
-    changeScene();
+    userChoiceNumber = 2;
+    generateHouseChoice();
 });
 
 
-
-const generateComputerChoice = () => {
-    const randomNumber = Math.floor(Math.random() * 3) + 1;
-    switch(randomNumber) {
-        case 1:
-            computerChoice = "rock";
-            break;
-        case 2:
-            computerChoice = "paper";
-            break;
-        case 3:
-            computerChoice = "scissors";
-            break;
-        default:
-            console.log("Error");
-    }
-    console.log("Computer choice is " + computerChoice);
+const generateHouseChoice = () => {
+    houseChoiceNumber = Math.floor(Math.random() * 3);
+    houseChoice = choices[houseChoiceNumber].name
+    determineTheWinner();
 }
 
 const determineTheWinner = () => {
-    if (userChoice == computerChoice) console.log("Tie");
-    else if (userChoice == "rock"  && computerChoice == "paper") console.log("Paper beats rock. Computer wins.");
-    else if (userChoice == "rock"  && computerChoice == "scissors") console.log("Rock beats scissors. User wins.");
-    else if (userChoice == "paper"  && computerChoice == "rock") console.log("Paper beats rock. User wins.");
-    else if (userChoice == "paper"  && computerChoice == "scissors") console.log("Scissors beats paper. Computer wins.");
-    else if (userChoice == "scissors"  && computerChoice == "paper") console.log("Scissors beats paper. User wins.");
-    else if (userChoice == "scissors"  && computerChoice == "rock") console.log("Rock beats scissors. Computer wins.");
+    userChoice = choices[userChoiceNumber].name;
+    console.log("Choice is " + userChoiceNumber);
+    console.log("house choice is " + houseChoice);
+    console.log("User choice is " + userChoice);
+    if (userChoice == houseChoice) resultInfoContent = ("Tie");
+    else if (userChoice == "rock"  && houseChoice == "paper") resultInfoContent = ("Paper beats rock. House wins.");
+    else if (userChoice == "rock"  && houseChoice == "scissors") resultInfoContent = ("Rock beats scissors. User wins.");
+    else if (userChoice == "paper"  && houseChoice == "rock") resultInfoContent = ("Paper beats rock. User wins.");
+    else if (userChoice == "paper"  && houseChoice == "scissors") resultInfoContent = ("Scissors beats paper. House wins.");
+    else if (userChoice == "scissors"  && houseChoice == "paper") resultInfoContent = ("Scissors beats paper. User wins.");
+    else if (userChoice == "scissors"  && houseChoice == "rock") resultInfoContent = ("Rock beats scissors. House wins.");
+    showResults();
 }
 
-const changeScene = () => {
+const showResults = () => {
     gameWrapper.style.display = "none";
     resultsWrapper.style.display = "flex";
+    userImg.src = choices[userChoiceNumber].image;
+    userImg.parentElement.style.borderColor = choices[userChoiceNumber].borderColor;
+    houseImg.src = choices[houseChoiceNumber].image;
+    houseImg.parentElement.style.borderColor = choices[houseChoiceNumber].borderColor;
+    resultInfo.innerHTML = resultInfoContent;
 }

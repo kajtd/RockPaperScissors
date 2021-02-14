@@ -166,6 +166,19 @@ $grayText: rgb(204, 205, 210);
         cursor: pointer;
         border: $iconBorder-width solid $redBorder;
     }
+
+    .result {
+
+
+        &__info {
+            font-size: 24px;
+        }
+
+
+        &__btn {
+            border: none;
+        }
+    }
 }
 
 .footer {  

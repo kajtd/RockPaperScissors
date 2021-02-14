@@ -29,7 +29,9 @@
   </div>
   <div class="container">
     <header class="header">
-      <img class="header__logo" src="images/logo.svg" alt="logo">
+      <a href="index.html">
+        <img class="header__logo" src="images/logo.svg" alt="logo">
+      </a>
       <div class="scoreboard">
         <h4 class="scoreboard__title">Score</h4>
         <p class="scoreboard__points">12</p>
@@ -53,13 +55,17 @@
       <div class="results-wrapper__choice">
         <h4 class="results-wrapper__title">You picked</h4>
         <div class="results-wrapper__icon">
-          <img class="icon" src="images/icon-paper.svg" alt="paper">        
+          <img class="icon" src="" alt="" id="user-image">          
         </div>
+      </div>
+      <div class="result">
+        <h2 class="result__title" id="result__info">You lose</h2>
+        <button class="result__btn" id="result__btn">Play Again</button>
       </div>
       <div class="results-wrapper__choice">
         <h4 class="results-wrapper__title">House picked</h4>
         <div class="results-wrapper__icon">
-          <img class="icon" src="images/icon-paper.svg" alt="paper">        
+          <img class="icon" src="" alt="" id="house-image">        
         </div>
       </div>
     </div>
