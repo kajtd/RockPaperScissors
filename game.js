@@ -9,6 +9,8 @@ const resultsWrapper = document.getElementsByClassName("results-wrapper")[0];
 const userImg = document.getElementById("user-image");
 const houseImg = document.getElementById("house-image");
 const resultInfo = document.getElementById("result__info");
+const scoreInfo = document.getElementById("scoreboard__points");
+const playAgainBtn = document.getElementById("result__btn");
 
 const closeModal = () => {
     modal.classList.remove("modal-active");
@@ -20,14 +22,26 @@ const openModal = () => {
     container.classList.add("container-active");
 }
 
+const playAgain = () => {
+    gameWrapper.classList.add("game-wrapper-active");
+    resultsWrapper.classList.remove("results-wrapper-active");
+}
+
 modalBtn.addEventListener("click", closeModal);
 rulesBtn.addEventListener("click", openModal);
+playAgainBtn.addEventListener("click", playAgain);
 
 
 // game code
 
 let userChoice, houseChoice, userChoiceNumber, houseChoiceNumber, resultInfoContent;
-let score = 0;
+
+// Get Item from LocalStorage or highScore === 0
+let score = localStorage.getItem('score') || 0;
+window.addEventListener('load', () => {
+    localStorage.setItem('score', score);
+    scoreInfo.innerHTML = score;
+});
 
 const choices = [
     {name:"rock", image:"images/icon-rock.svg", borderColor:"rgb(221, 60, 91)"},
@@ -65,27 +79,40 @@ const generateHouseChoice = () => {
 
 const determineTheWinner = () => {
     userChoice = choices[userChoiceNumber].name;
-    console.log("Choice is " + userChoiceNumber);
-    console.log("house choice is " + houseChoice);
-    console.log("User choice is " + userChoice);
     if (userChoice == houseChoice) resultInfoContent = "Tie";
-    else if (userChoice == "rock"  && houseChoice == "scissors") resultInfoContent = "You win";
-    else if (userChoice == "paper"  && houseChoice == "rock") resultInfoContent = "You win";
-    else if (userChoice == "scissors"  && houseChoice == "paper") resultInfoContent = "You win";
-    else if (userChoice == "scissors"  && houseChoice == "rock") resultInfoContent = "You lose";
-    else if (userChoice == "paper"  && houseChoice == "scissors") resultInfoContent = "You lose";
-    else if (userChoice == "rock"  && houseChoice == "paper") resultInfoContent = "You lose";
+    else if (
+        (userChoice == "rock"  && houseChoice == "scissors") ||
+        (userChoice == "paper"  && houseChoice == "rock") ||
+        (userChoice == "scissors"  && houseChoice == "paper")
+        ) {
+        resultInfoContent = "You win";
+        score++;
+    }
+    else if (
+        (userChoice == "scissors"  && houseChoice == "rock") ||
+        (userChoice == "paper"  && houseChoice == "scissors") ||
+        (userChoice == "rock"  && houseChoice == "paper")
+        ) {
+        resultInfoContent = "You lose";
+        score--;
+    }
 
     // when we know who is the winner we can show results to our user
     showResults();
 }
 
 const showResults = () => {
+
+    // change the scene from game to results
     gameWrapper.classList.remove("game-wrapper-active");
     resultsWrapper.classList.add("results-wrapper-active");
+
+    // create icons and display result
     userImg.src = choices[userChoiceNumber].image;
     userImg.parentElement.style.borderColor = choices[userChoiceNumber].borderColor;
     houseImg.src = choices[houseChoiceNumber].image;
     houseImg.parentElement.style.borderColor = choices[houseChoiceNumber].borderColor;
     resultInfo.innerHTML = resultInfoContent;
+    scoreInfo.innerHTML = score;
+    localStorage.setItem('score', score);
 }
