@@ -8,15 +8,6 @@
   <link rel="stylesheet" href="index.css">
   
   <title>Frontend Mentor | Rock, Paper, Scissors</title>
-<!-- 
-
-  You Picked
-  The House Picked
-
-  You Win
-  You Lose
-
-  Play Again -->
 
 </head>
 <body class="body">
@@ -50,17 +41,17 @@
       </div>
     </div>
     <div class="results-wrapper">
-      <div class="results-wrapper__choice">
+      <div class="results-wrapper__choice" id="user-choice">
         <h4 class="results-wrapper__title">You picked</h4>
         <div class="results-wrapper__icon">
           <img class="icon" src="" alt="" id="user-image">          
         </div>
       </div>
-      <div class="result">
+      <div class="result" id="result">
         <h2 class="result__info" id="result__info">You lose</h2>
         <button class="result__btn" id="result__btn">Play Again</button>
       </div>
-      <div class="results-wrapper__choice">
+      <div class="results-wrapper__choice" id="house-choice">
         <h4 class="results-wrapper__title">The House picked</h4>
         <div class="results-wrapper__icon">
           <img class="icon" src="" alt="" id="house-image">        
@@ -68,10 +59,6 @@
       </div>
     </div>
     <footer class="footer">
-      <div class="attribution">
-        Challenge by <a class="attribution__link" href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-        <span class="line-breaker">Coded by <a class="attribution__link" href="#">Kajetan Domagała</a>.</span>
-      </div>
       <button class="footer__btn" id="rules-btn">rules</button>
     </footer>
   </div>
