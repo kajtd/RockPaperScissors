@@ -27,6 +27,7 @@ rulesBtn.addEventListener("click", openModal);
 // game code
 
 let userChoice, houseChoice, userChoiceNumber, houseChoiceNumber, resultInfoContent;
+let score = 0;
 
 const choices = [
     {name:"rock", image:"images/icon-rock.svg", borderColor:"rgb(221, 60, 91)"},
@@ -57,6 +58,8 @@ scissors.addEventListener("click", () => {
 const generateHouseChoice = () => {
     houseChoiceNumber = Math.floor(Math.random() * 3);
     houseChoice = choices[houseChoiceNumber].name
+
+    // when we already know user and computer choice we can
     determineTheWinner();
 }
 
@@ -65,19 +68,21 @@ const determineTheWinner = () => {
     console.log("Choice is " + userChoiceNumber);
     console.log("house choice is " + houseChoice);
     console.log("User choice is " + userChoice);
-    if (userChoice == houseChoice) resultInfoContent = ("Tie");
-    else if (userChoice == "rock"  && houseChoice == "paper") resultInfoContent = ("Paper beats rock. House wins.");
-    else if (userChoice == "rock"  && houseChoice == "scissors") resultInfoContent = ("Rock beats scissors. User wins.");
-    else if (userChoice == "paper"  && houseChoice == "rock") resultInfoContent = ("Paper beats rock. User wins.");
-    else if (userChoice == "paper"  && houseChoice == "scissors") resultInfoContent = ("Scissors beats paper. House wins.");
-    else if (userChoice == "scissors"  && houseChoice == "paper") resultInfoContent = ("Scissors beats paper. User wins.");
-    else if (userChoice == "scissors"  && houseChoice == "rock") resultInfoContent = ("Rock beats scissors. House wins.");
+    if (userChoice == houseChoice) resultInfoContent = "Tie";
+    else if (userChoice == "rock"  && houseChoice == "scissors") resultInfoContent = "You win";
+    else if (userChoice == "paper"  && houseChoice == "rock") resultInfoContent = "You win";
+    else if (userChoice == "scissors"  && houseChoice == "paper") resultInfoContent = "You win";
+    else if (userChoice == "scissors"  && houseChoice == "rock") resultInfoContent = "You lose";
+    else if (userChoice == "paper"  && houseChoice == "scissors") resultInfoContent = "You lose";
+    else if (userChoice == "rock"  && houseChoice == "paper") resultInfoContent = "You lose";
+
+    // when we know who is the winner we can show results to our user
     showResults();
 }
 
 const showResults = () => {
-    gameWrapper.style.display = "none";
-    resultsWrapper.style.display = "flex";
+    gameWrapper.classList.remove("game-wrapper-active");
+    resultsWrapper.classList.add("results-wrapper-active");
     userImg.src = choices[userChoiceNumber].image;
     userImg.parentElement.style.borderColor = choices[userChoiceNumber].borderColor;
     houseImg.src = choices[houseChoiceNumber].image;

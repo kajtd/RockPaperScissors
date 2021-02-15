@@ -21,10 +21,8 @@
 </head>
 <body class="body">
   <div class="modal" id="modal">
-    <header class="modal-header">
-      <h2 class="modal-header__title">Rules</h2>
-      <button class="modal-header__btn" id="modal-btn"></button>
-    </header>
+    <h2 class="modal__title">Rules</h2>
+    <button class="modal__btn" id="modal-btn"></button>
     <img class="modal__image" src="images/image-rules.svg" alt="rules">    
   </div>
   <div class="container">
@@ -34,10 +32,10 @@
       </a>
       <div class="scoreboard">
         <h4 class="scoreboard__title">Score</h4>
-        <p class="scoreboard__points">12</p>
+        <p class="scoreboard__points">0</p>
       </div>
     </header>
-    <div class="game-wrapper">
+    <div class="game-wrapper game-wrapper-active">
       <img class="game-wrapper__bg" src="images/bg-triangle.svg" alt="triangle">
       <div class="icons">
         <button class="icons__btn" id="rock">
@@ -59,11 +57,13 @@
         </div>
       </div>
       <div class="result">
-        <h2 class="result__title" id="result__info">You lose</h2>
-        <button class="result__btn" id="result__btn">Play Again</button>
+        <h2 class="result__info" id="result__info">You lose</h2>
+        <a href="index.html">
+          <button class="result__btn" id="result__btn">Play Again</button>
+        </a>
       </div>
       <div class="results-wrapper__choice">
-        <h4 class="results-wrapper__title">House picked</h4>
+        <h4 class="results-wrapper__title">The House picked</h4>
         <div class="results-wrapper__icon">
           <img class="icon" src="" alt="" id="house-image">        
         </div>
@@ -72,7 +72,7 @@
     <footer class="footer">
       <div class="attribution">
         Challenge by <a class="attribution__link" href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-        Coded by <a class="attribution__link" href="#">Kajetan Domagała</a>.
+        <span class="line-breaker">Coded by <a class="attribution__link" href="#">Kajetan Domagała</a>.</span>
       </div>
       <button class="footer__btn" id="rules-btn">rules</button>
     </footer>
