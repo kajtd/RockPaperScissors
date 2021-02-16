@@ -15,7 +15,6 @@ $grayText: rgb(204, 205, 210);
     0% { 
         opacity: 0; 
         transform: scale(0);
-        // transform: rotate3d(1, 1, 1, 80deg);
     }
     100% { 
           transform: scale(1);
@@ -44,27 +43,8 @@ $grayText: rgb(204, 205, 210);
     }
 }
 
-@keyframes orbit-shadow {
-    0% {
-      box-shadow: 50px 50px 5px darkgrey;
-    }
-    25% {
-      box-shadow: -50px 50px 5px darkgrey;
-    }
-    50% {
-      box-shadow: -50px -50px 5px darkgrey;
-    }
-    75% {
-      box-shadow: 50px -50px 5px darkgrey;
-    }
-    1000% {
-      box-shadow: 50px 50px 5px darkgrey;
-    }
-}
-
 @keyframes bounce {
     0% {
-        transform: scale(0.2);
       transform: translateX(0px);
       timing-function: ease-in;
     }
@@ -102,21 +82,13 @@ $grayText: rgb(204, 205, 210);
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    // border: 1px solid red;
-    //overflow-x: hidden;
 }
 
 .body {
     font-family: 'Barlow Semi Condensed', sans-serif;
     background: radial-gradient(circle at 50% 10%, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
-    background-repeat: no-repeat;
     color: white;
     min-height: 100vh;
-    // overflow: hidden;
-}
-
-.body-active {
-    background: red;
 }
 
 .container {
@@ -125,11 +97,13 @@ $grayText: rgb(204, 205, 210);
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: .5s ease-in-out;
 }
 
 .container-active {
     opacity: 0.1;
 }
+
 
 .header {
     border: 2px solid $headerOutline;
@@ -168,12 +142,6 @@ $grayText: rgb(204, 205, 210);
             font-size: 3rem;
             font-weight: 700;
             color: $darkText;
-        }
-
-        .bounce {
-            animation-name: bounce;
-            animation-duration: 1s;
-            animation-delay: 0.25s;
         }
     }
 }
@@ -234,7 +202,7 @@ $grayText: rgb(204, 205, 210);
 }
 
 .results-wrapper {
-    display: flex;
+    display: none;
     margin-top: 100px;
 
     &__choice {
@@ -279,7 +247,6 @@ $grayText: rgb(204, 205, 210);
         -moz-box-shadow:    inset 0 0 25px $headerOutline;
         -webkit-box-shadow: inset 0 0 25px $headerOutline;
         box-shadow:         inset 0 0 25px $headerOutline;
-        cursor: pointer;
         border: 30px solid $redBorder;
 
         .icon {
@@ -293,8 +260,6 @@ $grayText: rgb(204, 205, 210);
         justify-content: center;
         align-items: center;
         opacity: 0;
-        // animation-delay: 4s;
-        // animation: fadeIn 1s;
 
         &__info {
             font-size: 48px;
@@ -325,7 +290,6 @@ $grayText: rgb(204, 205, 210);
 
 .results-wrapper-active {
     display: flex;
-    // animation: fadeIn 1s;
 }
 
 .footer {  
@@ -397,10 +361,9 @@ $grayText: rgb(204, 205, 210);
         transition: .2s ease-in-out;
         grid-area: btn;
         justify-self: end;
-
     
         &:hover {
-            transform: rotate(90deg);
+            transform: scale(1.2);
         }
 
         &:after {
@@ -430,6 +393,12 @@ $grayText: rgb(204, 205, 210);
 }
 
 
+.bounce {
+    animation-name: bounce;
+    animation-duration: 1s;
+    animation-delay: 0.25s;
+}
+
 @media(max-width: 1266px) {
     .results-wrapper {
     
@@ -438,6 +407,7 @@ $grayText: rgb(204, 205, 210);
         }
     }
 }
+
 @media(max-width: 966px) {
 
     .header {
@@ -536,6 +506,23 @@ $grayText: rgb(204, 205, 210);
 
 }
 
+@media(max-width: 698px) {
+    .results-wrapper {
+
+        margin-top: 20px;
+
+        &__choice {
+            margin-right: 0;
+        }
+
+        &__icon {
+            width: 120px;
+            height: 120px;
+            border-width: $iconBorder-width;
+        }
+    }
+}
+
 @media(max-width: 466px) {
     $iconBorder-width: 10px;
 
@@ -596,7 +583,17 @@ $grayText: rgb(204, 205, 210);
         margin-top: 20px;
 
         &__choice {
-            margin-right: 0;
+
+            &-active:first-child {
+                animation: fadeIn .5s;
+                transform: translateX(0px);
+            }
+    
+            &-active:last-child {
+                animation: fadeIn .5s;
+                transform: translateX(0px);
+            }
+            
         }
 
         &__icon {

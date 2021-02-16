@@ -72,56 +72,8 @@
   }
 }
 
-@-webkit-keyframes orbit-shadow {
-  0% {
-    -webkit-box-shadow: 50px 50px 5px darkgrey;
-            box-shadow: 50px 50px 5px darkgrey;
-  }
-  25% {
-    -webkit-box-shadow: -50px 50px 5px darkgrey;
-            box-shadow: -50px 50px 5px darkgrey;
-  }
-  50% {
-    -webkit-box-shadow: -50px -50px 5px darkgrey;
-            box-shadow: -50px -50px 5px darkgrey;
-  }
-  75% {
-    -webkit-box-shadow: 50px -50px 5px darkgrey;
-            box-shadow: 50px -50px 5px darkgrey;
-  }
-  1000% {
-    -webkit-box-shadow: 50px 50px 5px darkgrey;
-            box-shadow: 50px 50px 5px darkgrey;
-  }
-}
-
-@keyframes orbit-shadow {
-  0% {
-    -webkit-box-shadow: 50px 50px 5px darkgrey;
-            box-shadow: 50px 50px 5px darkgrey;
-  }
-  25% {
-    -webkit-box-shadow: -50px 50px 5px darkgrey;
-            box-shadow: -50px 50px 5px darkgrey;
-  }
-  50% {
-    -webkit-box-shadow: -50px -50px 5px darkgrey;
-            box-shadow: -50px -50px 5px darkgrey;
-  }
-  75% {
-    -webkit-box-shadow: 50px -50px 5px darkgrey;
-            box-shadow: 50px -50px 5px darkgrey;
-  }
-  1000% {
-    -webkit-box-shadow: 50px 50px 5px darkgrey;
-            box-shadow: 50px 50px 5px darkgrey;
-  }
-}
-
 @-webkit-keyframes bounce {
   0% {
-    -webkit-transform: scale(0.2);
-            transform: scale(0.2);
     -webkit-transform: translateX(0px);
             transform: translateX(0px);
     timing-function: ease-in;
@@ -165,8 +117,6 @@
 
 @keyframes bounce {
   0% {
-    -webkit-transform: scale(0.2);
-            transform: scale(0.2);
     -webkit-transform: translateX(0px);
             transform: translateX(0px);
     timing-function: ease-in;
@@ -218,13 +168,8 @@
 .body {
   font-family: 'Barlow Semi Condensed', sans-serif;
   background: radial-gradient(circle at 50% 10%, #1f3756, #141539);
-  background-repeat: no-repeat;
   color: white;
   min-height: 100vh;
-}
-
-.body-active {
-  background: red;
 }
 
 .container {
@@ -242,6 +187,8 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
 }
 
 .container-active {
@@ -301,15 +248,6 @@
   font-size: 3rem;
   font-weight: 700;
   color: #3b4363;
-}
-
-.header .scoreboard .bounce {
-  -webkit-animation-name: bounce;
-          animation-name: bounce;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-  -webkit-animation-delay: 0.25s;
-          animation-delay: 0.25s;
 }
 
 .game-wrapper {
@@ -379,9 +317,7 @@
 }
 
 .results-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   margin-top: 100px;
 }
 
@@ -442,7 +378,6 @@
           align-items: center;
   -webkit-box-shadow: inset 0 0 25px #606e85;
   box-shadow: inset 0 0 25px #606e85;
-  cursor: pointer;
   border: 30px solid #dd3c5b;
 }
 
@@ -585,8 +520,8 @@
 }
 
 .modal__btn:hover {
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .modal__btn:after {
@@ -616,6 +551,15 @@
       grid-template-rows: 1fr 1fr;
   padding: 30px;
       grid-template-areas: "title btn" "main main";
+}
+
+.bounce {
+  -webkit-animation-name: bounce;
+          animation-name: bounce;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-delay: 0.25s;
+          animation-delay: 0.25s;
 }
 
 @media (max-width: 1266px) {
@@ -714,6 +658,20 @@
   }
 }
 
+@media (max-width: 966px) and (max-width: 698px) {
+  .results-wrapper {
+    margin-top: 20px;
+  }
+  .results-wrapper__choice {
+    margin-right: 0;
+  }
+  .results-wrapper__icon {
+    width: 120px;
+    height: 120px;
+    border-width: 18px;
+  }
+}
+
 @media (max-width: 966px) and (max-width: 466px) {
   .header__logo {
     height: 60px;
@@ -752,8 +710,17 @@
   .results-wrapper {
     margin-top: 20px;
   }
-  .results-wrapper__choice {
-    margin-right: 0;
+  .results-wrapper__choice-active:first-child {
+    -webkit-animation: fadeIn .5s;
+            animation: fadeIn .5s;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+  .results-wrapper__choice-active:last-child {
+    -webkit-animation: fadeIn .5s;
+            animation: fadeIn .5s;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
   }
   .results-wrapper__icon {
     width: 120px;

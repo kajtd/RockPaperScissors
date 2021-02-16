@@ -39,6 +39,7 @@ const playAgain = () => {
     resultsWrapper.classList.remove("results-wrapper-active");
     result.classList.remove("result-active")
     resultsWrapper.style.display = "none";
+    // gameWrapper.style.display = "flex";
     document.getElementById("user-choice").classList.remove("results-wrapper__choice-active");
     document.getElementById("house-choice").classList.remove("results-wrapper__choice-active");
 }
@@ -129,7 +130,7 @@ const determineTheWinner = () => {
 const showResults = () => {
 
     // make sure we see the results
-    resultsWrapper.style.display = "flex";
+    resultsWrapper.style.display = window.innerWidth > 700 ? "flex" : "grid";
 
     // change the scene from game to results
     gameWrapper.classList.remove("game-wrapper-active");
@@ -159,10 +160,27 @@ const showResults = () => {
 const bouncePoints = (color) => {
     setTimeout(function() {
         scoreInfo.classList.add("bounce");
+        resultInfo.classList.add("bounce");
         scoreInfo.style.color = color;
+        resultInfo.style.color = color;
     }, 2000); 
     setTimeout(function() {
         scoreInfo.style.color = "hsl(229, 25%, 31%)";
+        resultInfo.style.color = "white";
         scoreInfo.classList.remove("bounce");
+        resultInfo.classList.remove("bounce");
     }, 3250); 
 }
+
+// fix errors with resizing
+window.addEventListener('resize', () => {
+    resultsWrapper.style.display = window.innerWidth > 700 ? "flex" : "grid";
+
+    // make sure that we display only one container
+    if (gameWrapper.classList.contains("game-wrapper-active")) {
+        resultsWrapper.style.display = "none";
+    }
+    // else if (resultsWrapper.classList.contains("results-wrapper-active")) {
+    //     gameWrapper.style.display = "none";
+    // }
+})
