@@ -65,14 +65,18 @@ window.addEventListener('load', () => {
 // possible icons
 
 const choices = [
-    {name:"rock", image:"images/icon-rock.svg", borderColor:"rgb(221, 60, 91)"},
-    {name:"paper", image:"images/icon-paper.svg", borderColor:"rgb(80, 108, 244)"},
-    {name:"scissors", image:"images/icon-scissors.svg", borderColor:"rgb(236, 159, 17)"},
+    {name:"rock", image:"images/icon-rock.svg", borderColor:"hsl(349, 71%, 52%)"},
+    {name:"paper", image:"images/icon-paper.svg", borderColor:"hsl(230, 89%, 62%)"},
+    {name:"scissors", image:"images/icon-scissors.svg", borderColor:"hsl(39, 89%, 49%)"},
+    {name:"lizard", image:"images/icon-lizard.svg", borderColor:"hsl(261, 73%, 60%)"},
+    {name:"spock", image:"images/icon-spock.svg", borderColor:"hsl(189, 59%, 53%)"},
 ];
 
 const rock = document.getElementById("rock");
 const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
+const lizard = document.getElementById("lizard");
+const spock = document.getElementById("spock");
 
 
 // trigger when user chooses an icon
@@ -92,9 +96,18 @@ scissors.addEventListener("click", () => {
     generateHouseChoice();
 });
 
+lizard.addEventListener("click", () => {
+    userChoiceNumber = 3;
+    generateHouseChoice();
+});
+
+spock.addEventListener("click", () => {
+    userChoiceNumber = 4;
+    generateHouseChoice();
+});
 
 const generateHouseChoice = () => {
-    houseChoiceNumber = Math.floor(Math.random() * 3);
+    houseChoiceNumber = Math.floor(Math.random() * 5);
     houseChoice = choices[houseChoiceNumber].name
 
     // when we already know user and computer choice we can determine who the winner is
@@ -105,19 +118,22 @@ const determineTheWinner = () => {
     userChoice = choices[userChoiceNumber].name;
     if (userChoice == houseChoice) resultInfoContent = "Tie";
     else if (
-        (userChoice == "rock"  && houseChoice == "scissors") ||
+        (userChoice == "scissors"  && houseChoice == "paper") ||
         (userChoice == "paper"  && houseChoice == "rock") ||
-        (userChoice == "scissors"  && houseChoice == "paper")
+        (userChoice == "rock"  && houseChoice == "lizard") ||
+        (userChoice == "lizard"  && houseChoice == "spock") ||
+        (userChoice == "spock"  && houseChoice == "scissors") ||
+        (userChoice == "scissors"  && houseChoice == "lizard") ||
+        (userChoice == "paper"  && houseChoice == "spock") ||
+        (userChoice == "rock"  && houseChoice == "scissors") ||
+        (userChoice == "lizard"  && houseChoice == "paper") ||
+        (userChoice == "spock"  && houseChoice == "rock") 
         ) {
         resultInfoContent = "You win";
         score++;
         bouncePoints("green");
     }
-    else if (
-        (userChoice == "scissors"  && houseChoice == "rock") ||
-        (userChoice == "paper"  && houseChoice == "scissors") ||
-        (userChoice == "rock"  && houseChoice == "paper")
-        ) {
+    else {
         resultInfoContent = "You lose";
         score--;
         bouncePoints("red");

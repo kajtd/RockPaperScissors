@@ -1,8 +1,10 @@
 // variables
 $iconBorder-width: 18px;
-$yellowBorder: rgb(236, 159, 17);
-$redBorder: rgb(221, 60, 91);
-$blueBorder: rgb(80, 108, 244);
+$yellowBorder: hsl(39, 89%, 49%);
+$redBorder: hsl(349, 71%, 52%);
+$blueBorder: hsl(230, 89%, 62%);
+$purpleBorder: hsl(261, 73%, 60%);
+$azureBorder: hsl(189, 59%, 53%);
 $headerOutline: hsl(217, 16%, 45%);
 $darkText: hsl(229, 25%, 31%);
 $blueText: hsl(229, 64%, 46%);
@@ -175,21 +177,32 @@ $grayText: rgb(204, 205, 210);
 
     
             &:first-child {
-                top: -150px;
-                left: -70px;
+                top: -100px;
+                left: 20px;
                 border: $iconBorder-width solid $redBorder;
             }
     
             &:nth-child(2) {
-                top: -340px;
-                right: 35px;
+                top: -260px;
+                left: 100px;
                 border: $iconBorder-width solid $blueBorder;
             }
     
-            &:last-child {
-                top: -340px;
-                left: 35px;
+            &:nth-child(3) {
+                top: -380px;
+                left: -70px;
                 border: $iconBorder-width solid $yellowBorder;
+            }
+            &:nth-child(4) {
+                top: -100px;
+                right: 20px;
+                border: $iconBorder-width solid $purpleBorder;
+            }
+    
+            &:last-child {
+                top: -260px;
+                right: 100px;
+                border: $iconBorder-width solid $azureBorder;
             }
             
         }
@@ -326,7 +339,8 @@ $grayText: rgb(204, 205, 210);
     background: white;
     border-radius: 10px;
     width: 450px;
-    height: 450px;
+    height: 550px;
+    padding: 30px;
     position: fixed;
     top: 0;
     right: 0;
@@ -338,6 +352,7 @@ $grayText: rgb(204, 205, 210);
     -moz-box-shadow:    inset 0 0 5px $headerOutline;
     -webkit-box-shadow: inset 0 0 5px $headerOutline;
     box-shadow:         inset 0 0 5px $headerOutline;
+    overflow: hidden;
 
 
     &__title {
@@ -378,6 +393,7 @@ $grayText: rgb(204, 205, 210);
         width: 350px;
         grid-area: main;
         justify-self: center;
+        margin-top: 20px;
     }
 }
 
@@ -385,8 +401,7 @@ $grayText: rgb(204, 205, 210);
     animation: fadeIn 1s;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    padding: 30px;
+    grid-template-rows: 1fr 425px;
     grid-template-areas:
       "title btn"
       "main main";
@@ -415,7 +430,7 @@ $grayText: rgb(204, 205, 210);
 
         &__logo {
             align-self: center;
-            height: 60px;
+            height: 100px;
         }
 
         .scoreboard {
@@ -440,7 +455,7 @@ $grayText: rgb(204, 205, 210);
 
     .footer {
         justify-content: center;
-        margin: 20px;
+        margin: 120px;
 
         &__btn {
             margin: 0;
@@ -519,11 +534,15 @@ $grayText: rgb(204, 205, 210);
             width: 120px;
             height: 120px;
             border-width: $iconBorder-width;
+
+            .icon {
+                width: 40px;
+            }
         }
     }
 }
 
-@media(max-width: 466px) {
+@media(max-width: 520px) {
     $iconBorder-width: 10px;
 
     .header {
@@ -538,7 +557,7 @@ $grayText: rgb(204, 205, 210);
     }
 
     .game-wrapper {
-        margin: 56px;
+        margin: 80px;
 
         &__bg {
             width: 200px;
@@ -552,21 +571,32 @@ $grayText: rgb(204, 205, 210);
                 height: 100px;
 
                 &:first-child {
-                    top: -100px;
-                    left: -50px;
+                    top: -50px;
+                    left: 10px;
                     border: $iconBorder-width solid $redBorder;
                 }
         
                 &:nth-child(2) {
-                    top: -220px;
-                    right: 15px;
+                    top: -160px;
+                    left: 50px;
                     border: $iconBorder-width solid $blueBorder;
                 }
         
-                &:last-child {
-                    top: -220px;
-                    left: 15px;
+                &:nth-child(3) {
+                    top: -240px;
+                    left: -50px;
                     border: $iconBorder-width solid $yellowBorder;
+                }
+                &:nth-child(4) {
+                    top: -50px;
+                    right: 10px;
+                    border: $iconBorder-width solid $purpleBorder;
+                }
+        
+                &:last-child {
+                    top: -160px;
+                    right: 50px;
+                    border: $iconBorder-width solid $azureBorder;
                 }
             }
 
@@ -630,7 +660,53 @@ $grayText: rgb(204, 205, 210);
 }
 }
 
-@media(max-width: 300px) {
+@media(max-width: 318px) {
+    $iconBorder-width: 8px;
+
+    .game-wrapper {
+        .icons {
+            width: 100px;
+            height: 100px;
+    
+    
+            &__btn {
+                    &:first-child {
+                        top: -50px;
+                        left: 60px;
+                        border: $iconBorder-width solid $redBorder;
+                    }
+            
+                    &:nth-child(2) {
+                        top: -160px;
+                        left: 80px;
+                        border: $iconBorder-width solid $blueBorder;
+                    }
+            
+                    &:nth-child(3) {
+                        top: -240px;
+                        left: 0px;
+                        border: $iconBorder-width solid $yellowBorder;
+                    }
+                    &:nth-child(4) {
+                        top: -50px;
+                        right: 60px;
+                        border: $iconBorder-width solid $purpleBorder;
+                    }
+            
+                    &:last-child {
+                        top: -160px;
+                        right: 80px;
+                        border: $iconBorder-width solid $azureBorder;
+                    }
+            }
+
+            &__icon {
+                width: 36px;
+            }
+        }
+    }
+
+
     .results-wrapper {
 
 
@@ -641,5 +717,9 @@ $grayText: rgb(204, 205, 210);
 
     .modal {
         padding: 10vh 10px;
+    }
+
+    .footer {
+        margin: 0;
     }
 }
